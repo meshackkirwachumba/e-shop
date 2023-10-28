@@ -11,7 +11,7 @@ const Container = ({ children }: ContainerProps) => {
         px-4
         xl:px-20
         md:px-2   
-        bg-yellow-500
+        
       "
     >
       {children}
