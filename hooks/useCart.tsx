@@ -1,4 +1,5 @@
 import { CartProductType } from "@/app/product/[productId]/ProductDetails";
+import { truncateText } from "@/utils/truncateText";
 import {
   createContext,
   useCallback,
@@ -6,6 +7,7 @@ import {
   useEffect,
   useState,
 } from "react";
+import toast from "react-hot-toast";
 
 type CartContextType = {
   cartTotalQty: number;
@@ -44,7 +46,8 @@ export const CartContextProvider = (props: Props) => {
       } else {
         updatedCart = [product];
       }
-
+      //alert the user product added to cart
+      toast.success(`${truncateText(product.name)} added to cart`);
       //make data in a cart persistent
       localStorage.setItem("eShopCartItems", JSON.stringify(updatedCart));
       return updatedCart;
