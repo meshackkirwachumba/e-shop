@@ -1,5 +1,7 @@
 "use client";
 
+import Button from "@/app/components/Button";
+import ProductImage from "@/app/components/products/ProductImage";
 import SetColor from "@/app/components/products/SetColor";
 import SetQuantity from "@/app/components/products/SetQuantity";
 import { Rating } from "@mui/material";
@@ -82,11 +84,16 @@ const ProductDetails = ({ product }: ProductDetailsProps) => {
      "
     >
       {/* images */}
-      <div className="bg-sky-500">images</div>
+
+      <ProductImage
+        product={product}
+        cartProduct={cartProduct}
+        handleColorSelect={handleColorSelect}
+      />
+
       {/* details */}
       <div
         className="
-        bg-rose-950
          flex
          flex-col
          gap-1
@@ -112,6 +119,7 @@ const ProductDetails = ({ product }: ProductDetailsProps) => {
           {product.inStock ? "In stock" : "Out of stock"}
         </div>
         <Horizontal />
+
         {/* colors */}
         <SetColor
           images={product.images}
@@ -119,6 +127,7 @@ const ProductDetails = ({ product }: ProductDetailsProps) => {
           handleColorSelect={handleColorSelect}
         />
         <Horizontal />
+
         {/* quantity tweaking */}
         <SetQuantity
           cartProduct={cartProduct}
@@ -126,7 +135,11 @@ const ProductDetails = ({ product }: ProductDetailsProps) => {
           handleQtyDecrease={handleQtyDecrease}
         />
         <Horizontal />
-        <div>Add to cart</div>
+
+        {/* adding cartProduct to cart */}
+        <div className="max-w-[300px]">
+          <Button label="Add To Cart" onClick={() => {}} />
+        </div>
       </div>
     </div>
   );

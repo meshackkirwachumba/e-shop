@@ -9,7 +9,7 @@ const Product = () => {
   const params = useParams();
 
   return (
-    <div className="bg-green-800 p-8">
+    <div className="p-8">
       <Container>
         <ProductDetails product={product} />
       </Container>
