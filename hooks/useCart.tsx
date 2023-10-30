@@ -1,5 +1,11 @@
 import { CartProductType } from "@/app/product/[productId]/ProductDetails";
-import { createContext, useCallback, useContext, useState } from "react";
+import {
+  createContext,
+  useCallback,
+  useContext,
+  useEffect,
+  useState,
+} from "react";
 
 type CartContextType = {
   cartTotalQty: number;
@@ -22,6 +28,13 @@ export const CartContextProvider = (props: Props) => {
     null
   );
 
+  //useEffect to check for cart items in local storage
+  useEffect(() => {
+    const cartItems: any = localStorage.getItem("eShopCartItems");
+    const cProducts: CartProductType[] | null = JSON.parse(cartItems);
+    setCartProducts(cProducts);
+  }, []);
+
   const handleAddProductToCart = useCallback((product: CartProductType) => {
     //allProductsInACartArray array can have products or null
     setCartProducts((allProductsInACartArray) => {
@@ -32,6 +45,8 @@ export const CartContextProvider = (props: Props) => {
         updatedCart = [product];
       }
 
+      //make data in a cart persistent
+      localStorage.setItem("eShopCartItems", JSON.stringify(updatedCart));
       return updatedCart;
     });
   }, []);
@@ -44,7 +59,7 @@ export const CartContextProvider = (props: Props) => {
   return <CartContext.Provider value={value} {...props} />;
 };
 
-//hook
+//consumer hook
 export const useCart = () => {
   const context = useContext(CartContext);
 
