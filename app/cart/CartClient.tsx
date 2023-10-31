@@ -8,7 +8,7 @@ import Button from "../components/Button";
 import ItemContent from "./ItemContent";
 
 const CartClient = () => {
-  const { cartProducts } = useCart();
+  const { cartProducts, handleClearCart } = useCart();
 
   if (!cartProducts || cartProducts.length === 0) {
     return (
@@ -98,7 +98,12 @@ const CartClient = () => {
       >
         {/* clear cart */}
         <div className="w-[90px]">
-          <Button label="Clear Cart" small outline onClick={() => {}} />
+          <Button
+            label="Clear Cart"
+            small
+            outline
+            onClick={() => handleClearCart()}
+          />
         </div>
         {/* subtotal */}
         <div className="flex flex-col text-sm gap-1 items-start">

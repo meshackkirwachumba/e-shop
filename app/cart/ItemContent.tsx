@@ -14,7 +14,11 @@ interface ItemContentProps {
 
 const ItemContent = ({ item }: ItemContentProps) => {
   // hook
-  const { handleRemoveProductFromCart } = useCart();
+  const {
+    handleRemoveProductFromCart,
+    handleCartQtyIncrease,
+    handleCartQtyDecrease,
+  } = useCart();
   return (
     <div
       className="
@@ -80,8 +84,8 @@ const ItemContent = ({ item }: ItemContentProps) => {
         <SetQuantity
           cartCounter
           cartProduct={item}
-          handleQtyIncrease={() => {}}
-          handleQtyDecrease={() => {}}
+          handleQtyIncrease={() => handleCartQtyIncrease(item)}
+          handleQtyDecrease={() => handleCartQtyDecrease(item)}
         />
       </div>
       {/* total */}
