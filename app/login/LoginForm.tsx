@@ -1,14 +1,14 @@
 "use client";
 
-import { useState } from "react";
+import { AiOutlineGoogle } from "react-icons/ai";
+import Button from "../components/Button";
 import Heading from "../components/Heading";
 import Input from "../components/inputs/Input";
+import { useState } from "react";
 import { FieldValues, SubmitHandler, useForm } from "react-hook-form";
-import Button from "../components/Button";
 import Link from "next/link";
-import { AiOutlineGoogle } from "react-icons/ai";
 
-const RegisterForm = () => {
+const LoginForm = () => {
   const [isLoading, setIsLoading] = useState(false);
 
   const {
@@ -18,7 +18,6 @@ const RegisterForm = () => {
   } = useForm<FieldValues>({
     defaultValues: {
       email: "",
-      name: "",
       password: "",
     },
   });
@@ -35,54 +34,46 @@ const RegisterForm = () => {
   };
   return (
     <>
-      <Heading title="Sign Up for E-Shop" />
+      <Heading title="Login" />
       <Button
-        outline
-        label="Sign up with Google"
+        label="Login with Google"
         icon={AiOutlineGoogle}
+        outline
         onClick={() => {}}
       />
-      <hr className="bg-slate-300 w-full h-px" />
-      <Input
-        id="name"
-        label="Name"
-        disabled={isLoading}
-        register={register}
-        errors={errors}
-        required
-      />
+      <hr className="w-full h-px bg-slate-400" />
       <Input
         id="email"
         label="Email"
         disabled={isLoading}
+        type="email"
         register={register}
         errors={errors}
-        type="email"
         required
       />
       <Input
         id="password"
         label="Password"
         disabled={isLoading}
+        type="password"
         register={register}
         errors={errors}
         required
-        type="password"
       />
 
       <Button
-        label={isLoading ? "Loading..." : "Sign Up"}
+        label={isLoading ? "Loading..." : "Login"}
         onClick={handleSubmit(onSubmitData)}
       />
 
       <p className="text-sm">
-        Already have an account?{" "}
-        <Link className="underline" href="/login">
-          Login
+        Don't have an account?{" "}
+        <Link className="underline" href="/register">
+          Register
         </Link>
       </p>
     </>
   );
 };
 
-export default RegisterForm;
+export default LoginForm;
