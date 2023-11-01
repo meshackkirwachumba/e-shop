@@ -11,6 +11,7 @@ import toast from "react-hot-toast";
 
 type CartContextType = {
   cartTotalQty: number;
+  cartTotalAmount: number;
   cartProducts: CartProductType[] | null;
   handleAddProductToCart: (product: CartProductType) => void;
   handleRemoveProductFromCart: (product: CartProductType) => void;
@@ -30,6 +31,7 @@ interface Props {
 //provider for context above
 export const CartContextProvider = (props: Props) => {
   const [cartTotalQty, setCartTotalQty] = useState(0);
+  const [cartTotalAmount, setCartTotalAmount] = useState(0);
   const [cartProducts, setCartProducts] = useState<CartProductType[] | null>(
     null
   );
@@ -40,6 +42,31 @@ export const CartContextProvider = (props: Props) => {
     const cProducts: CartProductType[] | null = JSON.parse(cartItems);
     setCartProducts(cProducts);
   }, []);
+
+  //useEffect which runs to get total
+
+  useEffect(() => {
+    const getTotal = () => {
+      if (cartProducts) {
+        const { total, qty } = cartProducts.reduce(
+          (acc, item) => {
+            const totalPrice = item.price * item.quantity;
+
+            acc.total = acc.total + totalPrice;
+            acc.qty = acc.qty + item.quantity;
+
+            return acc;
+          },
+          { total: 0, qty: 0 }
+        );
+
+        setCartTotalQty(qty);
+        setCartTotalAmount(total);
+      }
+    };
+
+    getTotal();
+  }, [cartProducts]);
 
   // adding product to cart
   const handleAddProductToCart = useCallback((product: CartProductType) => {
@@ -145,6 +172,7 @@ export const CartContextProvider = (props: Props) => {
 
   const value = {
     cartTotalQty,
+    cartTotalAmount,
     cartProducts,
     handleAddProductToCart,
     handleRemoveProductFromCart,
