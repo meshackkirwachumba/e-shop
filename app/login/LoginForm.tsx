@@ -34,9 +34,9 @@ const LoginForm = () => {
   };
   return (
     <>
-      <Heading title="Login" />
+      <Heading title="Sign In to E-Shop" />
       <Button
-        label="Login with Google"
+        label="Continue with Google"
         icon={AiOutlineGoogle}
         outline
         onClick={() => {}}
