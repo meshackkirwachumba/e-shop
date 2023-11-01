@@ -16,11 +16,11 @@ export default NextAuth({
       name: "Credentials",
       credentials: {
         email: {
-          label: "Email",
-          type: "email",
+          label: "email",
+          type: "text",
           placeholder: "jsmith@gmail.com",
         },
-        password: { label: "Password", type: "password" },
+        password: { label: "password", type: "password" },
       },
       async authorize(credentials, req) {
         //check if user has provided email and password
