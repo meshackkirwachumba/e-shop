@@ -13,6 +13,7 @@ const FormWrap = ({ children }: { children: React.ReactNode }) => {
        pt-24
      "
     >
+      {/* inputs wrapper */}
       <div
         className="
          max-w-[650px]
