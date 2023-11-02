@@ -38,7 +38,7 @@ const UserMenu = ({ currentUser }: UserMenuProps) => {
          text-slate-700
        "
         >
-          <Avatar />
+          <Avatar src={currentUser?.image} />
           <AiFillCaretDown />
         </div>
         {/* if isOpen === true display the modal */}
@@ -68,6 +68,7 @@ const UserMenu = ({ currentUser }: UserMenuProps) => {
                 <Link href="/admin">
                   <MenuItem onClick={toggleOpen}>Admin Dashboard</MenuItem>
                 </Link>
+                <hr />
                 <MenuItem
                   onClick={() => {
                     toggleOpen();

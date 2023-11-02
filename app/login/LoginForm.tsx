@@ -70,7 +70,9 @@ const LoginForm = ({ currentUser }: LoginFormProps) => {
         label="Continue with Google"
         icon={AiOutlineGoogle}
         outline
-        onClick={() => {}}
+        onClick={() => {
+          signIn("google");
+        }}
       />
       <hr className="w-full h-px bg-slate-400" />
       <Input
