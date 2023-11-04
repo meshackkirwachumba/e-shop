@@ -26,8 +26,8 @@ export default async function getProducts(params: IProductParams) {
         ...query,
         OR: [
           {
-            name: { contain: searchString, mode: "insensitive" },
-            description: { contain: searchString, mode: "insensitive" },
+            name: { contains: searchString, mode: "insensitive" },
+            description: { contains: searchString, mode: "insensitive" },
           },
         ],
       },
