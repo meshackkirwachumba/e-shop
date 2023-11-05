@@ -52,7 +52,7 @@ const ProductCard = ({ data }: ProductCardProps) => {
          "
         >
           <Image
-            src={data.images[0].image}
+            src={data.images[0]?.image}
             fill
             alt={data.name}
             className="w-full h-full object-contain"
