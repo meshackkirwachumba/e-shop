@@ -7,8 +7,10 @@ export async function DELETE(
   { params }: { params: { id: string } }
 ) {
   const currentUser = await getCurrentUser();
-
-  if (!currentUser || currentUser.role !== "ADMIN") {
+  if (!currentUser) {
+    return NextResponse.error();
+  }
+  if (currentUser.role !== "ADMIN") {
     return NextResponse.error();
   }
 
