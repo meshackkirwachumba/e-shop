@@ -3,8 +3,9 @@
 import { useRouter } from "next/navigation";
 import queryString from "query-string";
 import { FieldValues, SubmitHandler, useForm } from "react-hook-form";
+import Container from "../Container";
 
-const SearchBar = () => {
+const SearchBarSmall = () => {
   const router = useRouter();
   const {
     register,
@@ -36,15 +37,14 @@ const SearchBar = () => {
     reset();
   };
   return (
-    <div className="hidden md:flex items-center ">
+    <div className="md:hidden flex items-center justify-center">
       <input
         {...register("searchTerm")}
         placeholder="Explore E-Shop"
         type="text"
         autoComplete="off"
         className="
-         hidden
-         md:block
+         md:hidden
          p-2
          border
        border-gray-300
@@ -52,7 +52,7 @@ const SearchBar = () => {
          focus:outline-none
          focus:border[0.5px]
         focus:border-slate-500
-         w-80
+          w-[80%]
         "
       />
       <button
@@ -62,8 +62,7 @@ const SearchBar = () => {
             p-2
             hover:opacity-80
             text-white
-            hidden
-            md:block
+            md:hidden
        "
       >
         Search
@@ -72,4 +71,4 @@ const SearchBar = () => {
   );
 };
 
-export default SearchBar;
+export default SearchBarSmall;

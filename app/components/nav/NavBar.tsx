@@ -6,6 +6,7 @@ import UserMenu from "./UserMenu";
 import { getCurrentUser } from "@/actions/getCurrentUser";
 import Categories from "./Categories";
 import SearchBar from "./SearchBar";
+import SearchBarSmall from "./SearchBarSmall";
 
 const redressed = Redressed({ subsets: ["latin"], weight: ["400"] });
 
@@ -66,6 +67,9 @@ const NavBar = async () => {
           </div>
         </Container>
       </div>
+
+      {/* search bar for sm screens */}
+      <SearchBarSmall />
 
       {/* categories */}
       <Categories />
