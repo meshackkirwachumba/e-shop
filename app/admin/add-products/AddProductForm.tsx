@@ -73,7 +73,7 @@ const AddProductForm = ({ currentUser }: AddProductFormProps) => {
 
   useEffect(() => {
     setCustomValue("images", images);
-  }, [images, setCustomValue]);
+  }, [images]);
 
   const category = watch("category");
 

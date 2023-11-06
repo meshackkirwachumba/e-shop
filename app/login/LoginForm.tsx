@@ -99,12 +99,9 @@ const LoginForm = ({ currentUser }: LoginFormProps) => {
         onClick={handleSubmit(onSubmitData)}
       />
 
-      <p className="text-sm">
-        Don't have an account?
-        <Link className="underline" href="/register">
-          Register
-        </Link>
-      </p>
+      <Link className="underline" href="/register">
+        <p className="text-sm">Don't have an account? Register</p>
+      </Link>
     </>
   );
 };

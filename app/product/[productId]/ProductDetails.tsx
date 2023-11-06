@@ -81,7 +81,7 @@ const ProductDetails = ({ product }: ProductDetailsProps) => {
     setCartProduct((cartObj) => {
       return { ...cartObj, quantity: cartObj.quantity + 1 };
     });
-  }, [cartProduct]);
+  }, []);
 
   const handleQtyDecrease = useCallback(() => {
     if (cartProduct.quantity === 1) {
