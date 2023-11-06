@@ -44,13 +44,13 @@ const AddProductForm = ({ currentUser }: AddProductFormProps) => {
 
   const router = useRouter();
 
-  const setCustomValue = (id: string, value: any) => {
+  const setCustomValue = useCallback((id: string, value: any) => {
     setValue(id, value, {
       shouldValidate: true,
       shouldDirty: true,
       shouldTouch: true,
     });
-  };
+  }, []);
 
   const {
     register,
@@ -73,7 +73,7 @@ const AddProductForm = ({ currentUser }: AddProductFormProps) => {
 
   useEffect(() => {
     setCustomValue("images", images);
-  }, [images]);
+  }, [images, setCustomValue]);
 
   const category = watch("category");
 

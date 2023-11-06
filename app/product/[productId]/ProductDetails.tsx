@@ -81,7 +81,7 @@ const ProductDetails = ({ product }: ProductDetailsProps) => {
     setCartProduct((cartObj) => {
       return { ...cartObj, quantity: cartObj.quantity + 1 };
     });
-  }, []);
+  }, [cartProduct.quantity]);
 
   const handleQtyDecrease = useCallback(() => {
     if (cartProduct.quantity === 1) {
@@ -90,7 +90,7 @@ const ProductDetails = ({ product }: ProductDetailsProps) => {
     setCartProduct((cartObj) => {
       return { ...cartObj, quantity: cartObj.quantity - 1 };
     });
-  }, []);
+  }, [cartProduct.quantity]);
 
   const productRating =
     product.reviews.reduce((acc: number, item: any) => item.rating + acc, 0) /

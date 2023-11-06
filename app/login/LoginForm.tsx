@@ -98,10 +98,6 @@ const LoginForm = ({ currentUser }: LoginFormProps) => {
         label={isLoading ? "Loading..." : "Login"}
         onClick={handleSubmit(onSubmitData)}
       />
-
-      <p onClick={() => router.push("/register")} className="text-sm underline">
-        Don't have an account? Register
-      </p>
     </>
   );
 };
