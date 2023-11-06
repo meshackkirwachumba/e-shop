@@ -68,14 +68,11 @@ const ProductDetails = ({ product }: ProductDetailsProps) => {
     price: product.price,
   });
 
-  const handleColorSelect = useCallback(
-    (value: selectedImgType) => {
-      setCartProduct((prevCartProduct) => {
-        return { ...prevCartProduct, selectedImg: value };
-      });
-    },
-    [cartProduct]
-  );
+  const handleColorSelect = useCallback((value: selectedImgType) => {
+    setCartProduct((prevCartProduct) => {
+      return { ...prevCartProduct, selectedImg: value };
+    });
+  }, []);
 
   const handleQtyIncrease = useCallback(() => {
     if (cartProduct.quantity === 99) {
