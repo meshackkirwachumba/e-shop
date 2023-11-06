@@ -4,12 +4,15 @@ import ListRating from "./ListRating";
 import { products } from "@/utils/products";
 import getProductById from "@/actions/getProductById";
 import NullData from "@/app/components/NullData";
+import AddRating from "./AddRating";
+import { getCurrentUser } from "@/actions/getCurrentUser";
 
 interface IPrams {
   productId?: string;
 }
 const Product = async ({ params }: { params: IPrams }) => {
   const product = await getProductById(params);
+  const user = await getCurrentUser();
 
   if (!product) {
     return <NullData title="Product with given id does not exist!" />;
@@ -28,7 +31,7 @@ const Product = async ({ params }: { params: IPrams }) => {
          "
         >
           {/* rate a product */}
-          <div>Add Rating</div>
+          <AddRating product={product} user={user} />
           {/* list all product ratings */}
           <ListRating product={product} />
         </div>

@@ -16,9 +16,8 @@ export async function getCurrentUser() {
 
     // if there is a session
     const currentUser = await prisma.user.findUnique({
-      where: {
-        email: session.user.email,
-      },
+      where: { email: session.user.email },
+      include: { orders: true },
     });
 
     if (!currentUser) {
