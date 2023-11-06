@@ -10,12 +10,15 @@ interface SelectImageProps {
 }
 
 const SelectImage = ({ item, handleFileChange }: SelectImageProps) => {
-  const onDrop = useCallback((acceptedFiles: File[]) => {
-    // Do something with the files
-    if (acceptedFiles.length > 0) {
-      handleFileChange(acceptedFiles[0]);
-    }
-  }, []);
+  const onDrop = useCallback(
+    (acceptedFiles: File[]) => {
+      // Do something with the files
+      if (acceptedFiles.length > 0) {
+        handleFileChange(acceptedFiles[0]);
+      }
+    },
+    [handleFileChange]
+  );
   const { getRootProps, getInputProps, isDragActive } = useDropzone({
     onDrop,
     accept: { "image/*": [".jpeg", ".png"] },

@@ -24,7 +24,7 @@ const LoginForm = ({ currentUser }: LoginFormProps) => {
       router.push("/cart");
       router.refresh();
     }
-  }, []);
+  }, [currentUser, router]);
 
   const {
     register,
@@ -100,7 +100,7 @@ const LoginForm = ({ currentUser }: LoginFormProps) => {
       />
 
       <p className="text-sm">
-        Don't have an account?{" "}
+        Don't have an account?
         <Link className="underline" href="/register">
           Register
         </Link>

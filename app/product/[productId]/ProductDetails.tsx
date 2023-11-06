@@ -52,7 +52,7 @@ const ProductDetails = ({ product }: ProductDetailsProps) => {
         setIsProductInCart(true);
       }
     }
-  }, [cartProducts]);
+  }, [cartProducts, product.id]);
 
   const router = useRouter();
 
@@ -74,7 +74,7 @@ const ProductDetails = ({ product }: ProductDetailsProps) => {
         return { ...prevCartProduct, selectedImg: value };
       });
     },
-    [cartProduct.selectedImg]
+    [cartProduct]
   );
 
   const handleQtyIncrease = useCallback(() => {

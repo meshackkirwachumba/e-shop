@@ -29,19 +29,25 @@ const SelectColor = ({
     }
   }, [isProductCreated]);
 
-  const handleFileChange = useCallback((value: File) => {
-    setFile(value);
-    addImageToState({ ...item, image: value });
-  }, []);
+  const handleFileChange = useCallback(
+    (value: File) => {
+      setFile(value);
+      addImageToState({ ...item, image: value });
+    },
+    [addImageToState, item]
+  );
 
-  const handleCheck = useCallback((e: React.ChangeEvent<HTMLInputElement>) => {
-    setIsSelected(e.target.checked);
+  const handleCheck = useCallback(
+    (e: React.ChangeEvent<HTMLInputElement>) => {
+      setIsSelected(e.target.checked);
 
-    if (!e.target.checked) {
-      setFile(null);
-      removeImageFromState(item);
-    }
-  }, []);
+      if (!e.target.checked) {
+        setFile(null);
+        removeImageFromState(item);
+      }
+    },
+    [item, removeImageFromState]
+  );
 
   return (
     <div

@@ -164,37 +164,43 @@ const ManageOrdersClient = ({ orders }: ManageOrdersClientProps) => {
     },
   ];
 
-  const handleDispatch = useCallback(async (id: string) => {
-    await axios
-      .put("/api/order", {
-        id,
-        deliveryStatus: "dispatched",
-      })
-      .then(() => {
-        toast.success("Order dispatched!");
-        router.refresh();
-      })
-      .catch((err: any) => {
-        toast.error("Something went wrong!");
-        console.log(err);
-      });
-  }, []);
+  const handleDispatch = useCallback(
+    async (id: string) => {
+      await axios
+        .put("/api/order", {
+          id,
+          deliveryStatus: "dispatched",
+        })
+        .then(() => {
+          toast.success("Order dispatched!");
+          router.refresh();
+        })
+        .catch((err: any) => {
+          toast.error("Something went wrong!");
+          console.log(err);
+        });
+    },
+    [router]
+  );
 
-  const handleDeliver = useCallback((id: string) => {
-    axios
-      .put("/api/order", {
-        id,
-        deliveryStatus: "delivered",
-      })
-      .then(() => {
-        toast.success("Order delivered!");
-        router.refresh();
-      })
-      .catch((err: any) => {
-        toast.error("Something went wrong!");
-        console.log(err);
-      });
-  }, []);
+  const handleDeliver = useCallback(
+    (id: string) => {
+      axios
+        .put("/api/order", {
+          id,
+          deliveryStatus: "delivered",
+        })
+        .then(() => {
+          toast.success("Order delivered!");
+          router.refresh();
+        })
+        .catch((err: any) => {
+          toast.error("Something went wrong!");
+          console.log(err);
+        });
+    },
+    [router]
+  );
 
   return (
     <div className="max-w-[1150px] m-auto text-xl">

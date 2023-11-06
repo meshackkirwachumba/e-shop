@@ -132,51 +132,57 @@ const ManageProductsClient = ({ products }: ManageProductsClientProps) => {
     },
   ];
 
-  const handleToggleStock = useCallback((id: string, inStock: boolean) => {
-    axios
-      .put("/api/product", {
-        id,
-        inStock: !inStock,
-      })
-      .then(() => {
-        toast.success("Product status changed!");
-        router.refresh();
-      })
-      .catch((err: any) => {
-        toast.error("Something went wrong!");
-        console.log(err);
-      });
-  }, []);
+  const handleToggleStock = useCallback(
+    (id: string, inStock: boolean) => {
+      axios
+        .put("/api/product", {
+          id,
+          inStock: !inStock,
+        })
+        .then(() => {
+          toast.success("Product status changed!");
+          router.refresh();
+        })
+        .catch((err: any) => {
+          toast.error("Something went wrong!");
+          console.log(err);
+        });
+    },
+    [router]
+  );
 
-  const handleDelete = useCallback(async (id: string, images: any[]) => {
-    toast("Deleting product,please wait...");
+  const handleDelete = useCallback(
+    async (id: string, images: any[]) => {
+      toast("Deleting product,please wait...");
 
-    const handleImageDelete = async () => {
-      try {
-        for (const item of images) {
-          if (item.image) {
-            const imageRef = ref(storage, item.image);
-            await deleteObject(imageRef);
-            console.log("Image Deleted:", item.image);
+      const handleImageDelete = async () => {
+        try {
+          for (const item of images) {
+            if (item.image) {
+              const imageRef = ref(storage, item.image);
+              await deleteObject(imageRef);
+              console.log("Image Deleted:", item.image);
+            }
           }
+        } catch (error: any) {
+          return console.log("Deleting image error", error);
         }
-      } catch (error: any) {
-        return console.log("Deleting image error", error);
-      }
-    };
-    await handleImageDelete();
+      };
+      await handleImageDelete();
 
-    axios
-      .delete(`/api/product/${id}`)
-      .then(() => {
-        toast.success("Product deleted!");
-        router.refresh();
-      })
-      .catch((err: any) => {
-        toast.error("Failed to delete product!");
-        console.log(err);
-      });
-  }, []);
+      axios
+        .delete(`/api/product/${id}`)
+        .then(() => {
+          toast.success("Product deleted!");
+          router.refresh();
+        })
+        .catch((err: any) => {
+          toast.error("Failed to delete product!");
+          console.log(err);
+        });
+    },
+    [router, storage]
+  );
 
   return (
     <div className="max-w-[1150px] m-auto text-xl">

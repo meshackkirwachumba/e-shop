@@ -73,7 +73,7 @@ const AddProductForm = ({ currentUser }: AddProductFormProps) => {
 
   useEffect(() => {
     setCustomValue("images", images);
-  }, [images]);
+  }, [images, setCustomValue]);
 
   const category = watch("category");
 
@@ -83,7 +83,7 @@ const AddProductForm = ({ currentUser }: AddProductFormProps) => {
       setImages(null);
       setIsProductCreated(false);
     }
-  }, [isProductCreated]);
+  }, [isProductCreated, reset]);
 
   //upload product to db
   const onsubmitData: SubmitHandler<FieldValues> = async (data) => {

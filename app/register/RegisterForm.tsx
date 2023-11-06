@@ -27,7 +27,7 @@ const RegisterForm = ({ currentUser }: RegisterFormProps) => {
       router.push("/cart");
       router.refresh();
     }
-  }, []);
+  }, [currentUser, router]);
 
   const {
     register,
