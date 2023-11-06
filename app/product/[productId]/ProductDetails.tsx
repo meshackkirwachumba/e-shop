@@ -90,7 +90,7 @@ const ProductDetails = ({ product }: ProductDetailsProps) => {
     setCartProduct((cartObj) => {
       return { ...cartObj, quantity: cartObj.quantity - 1 };
     });
-  }, [cartProduct]);
+  }, []);
 
   const productRating =
     product.reviews.reduce((acc: number, item: any) => item.rating + acc, 0) /

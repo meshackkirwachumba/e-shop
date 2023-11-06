@@ -99,9 +99,9 @@ const LoginForm = ({ currentUser }: LoginFormProps) => {
         onClick={handleSubmit(onSubmitData)}
       />
 
-      <Link className="underline" href="/register">
-        <p className="text-sm">Don't have an account? Register</p>
-      </Link>
+      <p onClick={() => router.push("/register")} className="text-sm underline">
+        Don't have an account? Register
+      </p>
     </>
   );
 };
